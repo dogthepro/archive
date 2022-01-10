@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ca.in. - KaiOS phones safe jailbreak method</title>
+    <link rel="stylesheet" href="ui.css" type="text/css">
+    <link rel="icon" href="../tekbuster/icon.png" type="image/png">
+    <meta name="author" content="Luxferre">
+    <meta name="keywords" content="mediatek, mtk, webusb, fastboot, jailbreak, kaios, cache">
+  </head>
+  <body>
+    <header>
+      <h1>ca.in.</h1>
+      <h2>safe <b>ca</b>che-<b>in</b>jection based jailbreak method for KaiOS phones with Fastboot</h2>
+      <div id="connectZone">
+        <button type="button" id="connect">Enter Fastboot (MTK)</button><br><br>
+        <button type="button" id="jailbreak">Jailbreak</button><br><br>
+        <button type="button" id="attempt-oem-unlock">Attempt OEM unlock</button><br><br>
+        <button type="button" id="normal-reboot">Reboot</button>
+        <button type="button" id="mtk-reboot-recovery">Reboot into recovery (MTK)</button><br>
+        <button type="button" id="bootexp">Experimental root (MTK)</button>
+      </div>
+    </header>
+    <main>
+      <div style="text-align: left;margin: 0 auto">
+        <p>If you have a MediaTek-based KaiOS phone and can't enter Fastboot with a combo:</p>
+        <p> - Press "Enter Fastboot (MTK)"</p>
+        <p> - Insert the cable</p>
+        <p> - <b>Quickly</b> connect to MTK preloader port once it appears in the browser USB menu</p>
+        <p>Once you're in Fastboot mode, do the following:</p>
+        <p> - Press "Jailbreak"</p>
+        <p> - Connect to "Android" port once it appears in the browser USB menu</p>
+        <p>After reboot, the Developer menu should appear in the Settings - Device section.</p>
+        <p>If the flashing doesn't succeed:</p>
+        <p> - Reconnect in Fastboot mode</p>
+        <p> - Press "Attempt OEM unlock"</p>
+        <p> - Repeat the whole procedure</p>
+      </div>
+    </main>
+    <footer>
+      <div>© <a href="https://bananahackers.net/">BananaHackers</a> 2020 — present</div>
+    </footer>
+    <div id="working"><span>Working, please wait...</span></div>
+    <script src="usbio.js"></script>
+    <script src="ui.js"></script>
+  
+
+</body></html>

@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
+body {
+  background: #0f1516;
+  font-family: 'Open Sans', sans-serif;
+  color: #e7fff2;
+}
+a,
+a:link,
+a:visited,
+a:active {
+  color: #e7fff2;
+  border-bottom: 1px dotted #e7fff2;
+  cursor: pointer;
+  transition: text-shadow 0.3s ease, border-bottom-color 0.5s ease;
+  text-decoration: none;
+}
+a:hover {
+  color: #e7fff2;
+  text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 7px #00a71c;
+  border-bottom: 1px dotted transparent;
+  text-decoration: none;
+}
+button {
+  transition: text-shadow 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+  padding: 0.2rem 0.5rem;
+  border:1px solid #555!important;
+  cursor:pointer
+}
+button:hover {
+  color: #e7fff2;
+  text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 7px #00a71c;
+  box-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 7px #00a71c;
+  border: 1px solid #e7fff2!important;
+  text-decoration: none;
+}
+
+
+@media (max-width: 33.9em) {
+  body {
+    font-size: 0.7em;
+  }
+}
+header, footer {
+  text-align: center;
+}
+
+main, footer {
+  padding: 0 3em;
+}
+
+.elem-warning {
+  border: 1px solid red;
+}
+input, button, select, textarea {
+  background: #0f1516;
+  font-family: 'Open Sans', sans-serif;
+  color: #e7fff2;
+  font-size: 14pt;
+  border: 1px solid #e7fff2;
+  border-radius: 5px;
+}
+input, textarea {padding: 0.1em 0.5em}
+
+#jailbreak {font-size: 34pt}
+
+footer {
+  padding-bottom: 1em
+}
+
+#connectZone {
+  padding: 1em 0
+}
+
+#working {
+  display: none;
+  z-index: 100500;
+  font-size: 36pt;
+  font-weight: bold;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: black;
+  opacity: 0.8;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
