@@ -1,0 +1,130 @@
+*{outline:none;box-sizing: border-box}
+html {
+  font-size:17px;font-family: "Open Sans", OpenSans, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+pre {
+  font-size:0.9rem;font-family: monaco, Consolas, "Lucida Console", monospace;
+  text-align: left;
+  word-wrap:break-word;
+  white-space:pre-wrap;
+}
+body {margin:0;padding:0 2em;font-size:1rem;line-height:1.375}
+th,td,input,textarea,select,option,h1,h2,h3,h4 {
+  font-size-adjust:0.5;
+  font-family:inherit;
+  margin:0
+}
+a, a:link, a:visited, a:active {color:inherit}
+h1{font-size:2em;line-height:1.25;padding: 0.5em 0}
+h2{font-size:1.625em;line-height:1.1538462;padding: 0.5em 0}
+h3{font-size:1.375em;line-height:1.13636364;padding: 0.5em 0}
+h1,h2,#connectZone{text-align:center}
+body, input, button, select, textarea {
+  font-family: inherit;
+  color: #eee;
+  background-color: #222;
+}
+button {cursor:pointer}
+.elem-warning {
+  border: 1px solid red;
+}
+input, button, select, textarea {
+  font-size: 14pt;
+  border: 1px solid cyan;
+  border-radius: 5px;
+}
+input, textarea {padding: 0.1em 0.5em}
+#connect {font-size: 20pt}
+header {
+  text-align: center;
+}
+.toolbox {
+  width: 100%;
+  display: none;
+  flex-flow: row wrap
+}
+.toolbox section {
+  min-width: 50%;
+  text-align: center;
+}
+.faq {
+  padding: 1em 0
+}
+footer {
+  text-align: center;
+  padding-bottom: 1em
+}
+#connectZone {
+  padding: 1em 0
+}
+#imeival {width:48%}
+#simselect {width:48%}
+#rdimei {width:48%}
+#wrimei {width:48%}
+.imeiblk1, .smsblk1 {
+  padding-bottom: 0.5em
+}
+.imeiblk2, .smsblk2 {
+  padding-top: 0.5em
+}
+#working {
+  display: none;
+  z-index: 100500;
+  font-size: 36pt;
+  font-weight: bold;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: black;
+  opacity: 0.8;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+#smstext {
+  width: 100%;
+  min-height: 4em;
+  resize: none;
+}
+
+#smsopt {
+  width: 25%;
+}
+
+#smsnum {
+  width: 60%;
+}
+
+#smssend {
+  width: 13%;
+}
+
+.importblk {
+  width: 100%;
+  overflow: hidden
+}
+
+#importlabel {
+  display: inline-block;
+  padding: 0.1em 0.2em;
+  cursor: pointer;
+  width: 48%;
+  overflow: hidden;
+
+  border-radius: 5px;
+  border: 1px solid cyan
+}
+#importfile {
+  width: 1px;
+  height: 0px;
+  visibility: hidden;
+  overflow: hidden;
+  margin: 0
+}
+
+#contactdest {
+  width: 24%;
+}
+
+#ctimport {
+  width: 24%;
+}

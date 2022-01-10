@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width">
+    <title>TekBuster - MediaTek toolkit</title>
+    <link rel=stylesheet href="ui.css" type="text/css">
+    <link rel=icon href="icon.png" type="image/png">
+    <meta name=author content="Luxferre">
+    <meta name=keywords content="mediatek, mtk, webusb, suite, IMEI changer, contacts, import, flash sms">
+    <script>if(location.protocol === 'http:') location.protocol = 'https:'</script>
+  </head>
+  <body>
+    <header></header>
+      <h1>TekBuster</h1>
+      <h2>Control MediaTek-based GSM feature phones from your browser</h2>
+      <div id="connectZone"><button type="button" id="connect">Connect device</button></div>
+    </header>
+    <main>
+      <div class="toolbox">
+        <section>
+          <h3>Info Tool</h3>
+          <button type="button" id="getinfo">Get device information</button>
+          <pre id="infofield"></pre>
+        </section>
+        <section>
+          <h3>IMEI and SIM Tool</h3>
+          <div class="imeiblk1">
+            <select id="simselect">
+              <option value="1" selected="">SIM 1</option>
+              <option value="2">SIM 2</option>
+              <option value="3">SIM 3</option>
+              <option value="4">SIM 4</option>
+            </select>
+            <input type="text" id="imeival" maxlength="16" placeholder="IMEI">
+          </div>
+          <div class="imeiblk2">
+            <button type="button" id="rdimei">Read IMEI</button>&nbsp;<button type="button" id="wrimei" class="elem-warning">Write IMEI</button>
+          </div>
+        </section>
+        <section>
+          <h3>SMS Tool</h3>
+          <div class="smsblk1"><select id="smsopt">
+            <option value="0" selected="">Normal SMS</option>
+            <option value="1">Flash SMS</option>
+          </select>&nbsp;<input type="tel" id="smsnum" placeholder="Destination number (international format)">&nbsp;<button type="button" id="smssend" class="elem-warning">Send</button></div>
+          <div class="smsblk2"><textarea id="smstext" maxlength="70" placeholder="Your SMS (up to 70 characters)"></textarea></div>
+        </section>
+        <section>
+          <h3>Contact Tool</h3>
+          <div class="importblk">
+            <label id="importlabel" for="importfile">Choose CSV</label>&nbsp;<select id="contactdest"><option value="0" selected="">Phone</option><option value="1">SIM</option></select>&nbsp;<button id="ctimport" class="elem-warning">Import</button><input type="file" id="importfile" accept="text/csv">
+          </div>
+          <h3>Keypad Tool</h3>
+          <div>
+            <input type="text" id="kpdval" placeholder="Keypad sequence">
+            <button type="button" id="kpdsend">Send</button>
+          </div>
+        </section>
+      </div>
+      <section class="faq">
+        <h3>FAQ</h3>
+        <p><b>Why does this exist on GitHub?</b></p>
+        <p>This is an exact copy of <a href="https://tekbuster.surge.sh">the original one</a> so you can access it in case it is down.</p>
+        <p><b>What is this?</b></p> 
+        <p>TekBuster is an experimental toolkit (both this page and underlying buster.js library) that enables advanced control over MTK-based feature phones directly from a web browser. Currently supported actions include: reading hardware and firmware version information, reading and changing IMEI (for any of the 4 SIM cards where applicable), keypad press automation, non-concatenated Unicode SMS sending (both normal and class 0/flash SMS) and contact import from Google Contacts exported CSV. Accordingly, the toolkit page is visually split into the following sections: Info Tool, IMEI and SIM Tool, Keypad Tool, SMS Tool and Contact Tool.</p> 
+        <p><b>Which phones are supported?</b></p> 
+        <p>Most MediaTek MT62xx-based feature phones and watch phones that enable virtual serial (COM) port connection should work fine. Primary target is MT6261 chipset support with all its modifications. MT6260A and MT6276 chipsets are also known to work.</p>
+        <p><b>Can other SoC vendor support be added?</b></p>
+        <p>No. TekBuster library and toolkit rely on proprietary AT commands offered by MediaTek only. Adding other SoC vendors (e.g. Spreadtrum) would mean writing another toolkit altogether.</p>
+        <p><b>Are MTK-based Nokia feature phones supported as well?</b></p>
+        <p>Yes and no at the same time. For instance, IMEI changer <i>will not</i> work for these Nokias because of their own NVRAM protection. Also, because Series 30+ platform (developed by Microsoft and then HMD Global) slightly differs from the vanilla MAUI platform by MediaTek, we have to provide quirky workarounds of their USB endpoint management. So, the only way to find out which features work and which don't is by pure experimenting.</p> 
+        <p><b>Which phones were tested to 100% work with TekBuster?</b></p> 
+        <p>Reference test targets were Elari Nanophone C, Nokia 105-2017 TA-1010 (both are MT6261D-based single SIM phones) and Nokia 105 Classic DS RM-1134 (MT6261D, dual SIM). Nokia does not allow to change IMEI, other functions work fine. Other 100% working phones are Philips Xenium E181 (MT6261D, dual SIM), Philips E106 (MT6261M, dual SIM), Caterpillar CAT B25 (MT6260A, dual SIM), Sigma X-treme DZ68 (MT6261M, dual SIM), Sigma X-style 24 Onyx (MT6261D, dual SIM) and Sigma X-treme PQ67 (MT6276, dual SIM).</p>
+        <p><b>Which browsers are supported?</b></p> 
+        <p>TekBuster should work on any browser that supports WebUSB API, Promise API and async functions. At the time of publishing this toolkit, this tech is pretty new and supported only by recent versions of Chrome, Opera and Chrome for Android.</p> 
+        <p><b>What are the goals of creating this toolkit?</b></p> 
+        <p>TekBuster was created as probably world's first cross-platform MediaTek phone suite. Thanks to WebUSB API, it aims to eliminate the barrier between different host platforms from which you can control your phones. Say goodbye to Windows-only proprietary tools and Chinese drivers. Now you can do this from Linux, Mac and any other platform where WebUSB API works. Even a sufficiently new OTG-enabled Android tablet or smartphone with an OTG adapter will allow you control the feature phone right from the Chrome browser. No need to worry about the drivers, emulators, host platform limitations and so on. The goal was to make the toolkit that works everywhere. And it does - all you need is a compatible browser.</p> 
+        <p><b>How to change the SIM card to send SMS, read/write IMEI and import contacts?</b></p>
+        <p>If this operation is supported, use the selection box under IMEI and SIM Tool. If your phone supports multiple SIM cards (up to 4), their choice will be enabled there.</p>
+        <p><b>Why aren't my sent messages saved in the device outbox?</b></p>
+        <p>This behavior is intended. Saving messages into the outbox requires more commands to send.</p>
+        <p><b>What are Flash SMS messages and why are they here?</b></p>
+        <p>Flash SMS are special (Class 0) messages that are designed to be displayed immediately on the recipient's screen. They cannot be sent from a phone itself (although some mobile carriers support their own conversion prefixes like "#flash#" but others don't) and different phones react differently to them. Most devices allow you to save the flash SMS after reading and view its details, e.g. sender number. However, some devices (including iPhones) do not show any sender information and cannot save these messages in any logs. Because of these volatile properties, Flash SMS messages were enabled here to be sent by anyone via any carrier.</p>
+        <p><b>How to send control key presses with Keypad Tool?</b></p>
+        <p>Besides normal 12 keys (0-9, * and #), MediaTek handsets also support sending the following control keys: [ for left softkey, ] for right softkey, m for middle/action softkey, s for Send call key, e for End call key, and four D-pad keys: v, &lt;, &gt; and ^ for Down, Left, Right and Up respectively. Please note that the function of these control key codes may vary from model to model.</p>
+        <p><b>I'm stuck at "Working, please wait..." screen. What should I do?</b></p>
+        <p>The reason for this might be unstable serial input. You should wait for at least 20 seconds, then try closing or reloading the page, then reconnecting the device to the USB port and reloading the page once again.</p>
+        <p><b>Is this toolkit open-source?</b></p>
+        <p>Of course! You can embed the page or use the buster.js library or any part of it in your own code as long as you include the reference to this website.</p>
+        <p><b>Is the project available on GitHub?</b></p>
+        <p>Unlike all previous projects, the author is reluctant to publish this complete page source on GitHub. Meanwhile, you can just download <a href="buster.js" download="buster.js">buster.js source code</a> from this resource itself.</p>
+        <p><b>Are my data sent to any remote servers?</b></p>
+        <p>Absolutely no! You can even download the page structure (index.html, icon.png, ui.js, ui.css, papaparse.min.js and buster.js) and it will still be fully functional. Any data you enter or retrieve from the device on this page are not leaving your machine. Moreover, TekBuster is not using any tracking or analytics code and is itself hosted on a static web page hosting provider.</p>
+        <p><b>Is it PWA-compliant?</b></p>
+        <p>Not really. For instance, PWA specification explicitly requires the app to leverage service workers, which are not quite usable (yet) for the purposes of TekBuster.</p>
+      </section>
+    </main>
+    <footer>
+      <div>© Luxferre 2018–present</div>
+    </footer>
+    <div id="working"><span>Working, please wait...</span></div>
+    <script src="papaparse.min.js" async=""></script>
+    <script src="buster.js"></script>
+    <script src="ui.js"></script>
+</body></html>
